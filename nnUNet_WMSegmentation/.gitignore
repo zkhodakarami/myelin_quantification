@@ -1,0 +1,35 @@
+# nnU-Net data and results (large, not for version control)
+nnUNet_raw/
+nnUNet_preprocessed/
+nnUNet_results/
+test_ground_truth/
+predictions/
+visualisations/
+
+# Raw image data (large, not for version control)
+LowRes_all/
+WMMask_all/
+
+# Evaluation outputs
+evaluation_results.csv
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

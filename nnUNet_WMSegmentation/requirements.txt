@@ -1,0 +1,11 @@
+# Core framework
+nnunetv2
+
+# Data preparation
+Pillow
+numpy
+scikit-learn
+
+# Evaluation
+scipy
+matplotlib
