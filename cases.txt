@@ -1,0 +1,7 @@
+# Example slide IDs - replace with your actual slide IDs
+# Format 1: hyphen-separated
+DI_000001_ABC-01-LFB+CV
+DI_000002_DEF-03-LFB-CV
+# Format 2: underscore-separated
+DI_000003_04S_07_LFBCV
+DI_000004R_06I_12_LFB-CV
