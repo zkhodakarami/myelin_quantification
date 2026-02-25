@@ -73,7 +73,7 @@ def identify_intact_superpixels(
     ):
     """
     Identify superpixels in white matter with lowest attention (most intact).
-    Only superpixels with >50% area inside WM mask are considered.
+    Only superpixels with >99% area inside WM mask are considered.
 
     Args:
         seg: [H, W] segmentation (integer superpixel ids)
@@ -97,11 +97,11 @@ def identify_intact_superpixels(
         if total == 0:
             continue
         overlap = np.sum(sp_mask & mask_wm)
-        if overlap / total > 0.5:
+        if overlap / total > 0.99:
             wm_sp_ids.add(int(sp_id))
 
     print(f"[Analysis] Total superpixels in seg: {len(np.unique(seg))}")
-    print(f"[Analysis] Superpixels considered WM (>50% overlap): {len(wm_sp_ids)}")
+    print(f"[Analysis] Superpixels considered WM (>99% overlap): {len(wm_sp_ids)}")
 
     # filter sp_stats to WM only
     wm_sp_stats = [s for s in sp_stats if int(s.get("superpixel_id")) in wm_sp_ids]
@@ -122,7 +122,7 @@ def identify_intact_superpixels(
         selection_method = f"n_tiles={n_tiles}"
     else:
         if percentile is None:
-            percentile = 10.0
+            percentile = 2.0
         n_intact = max(1, int(len(wm_sp_stats) * float(percentile) / 100.0))
         selection_method = f"percentile={percentile}"
 
@@ -360,7 +360,7 @@ def main():
     parser.add_argument("--run_dir", required=True, help="Directory with superpixel results")
     parser.add_argument("--wm_mask", required=True, help="Path to white matter mask image (full res)")
     parser.add_argument("--tiff_image", required=True, help="Path to original TIFF image")
-    parser.add_argument("--percentile", type=float, default=None, help="Bottom X%% attention within WM to consider as intact (default: 10 if not specified)")
+    parser.add_argument("--percentile", type=float, default=None, help="Bottom X%% attention within WM to consider as intact (default: 2 if not specified)")
     parser.add_argument("--n_tiles", type=int, default=None, help="Exact number of tiles with lowest attention to select (overrides --percentile)")
     parser.add_argument("--output_dir", default=None, help="Output directory (default: run_dir/intact_analysis)")
 
