@@ -1,3 +1,5 @@
+<img width="1827" height="637" alt="wmh_segmentation" src="https://github.com/user-attachments/assets/8bd5ccfb-11eb-496b-8595-3695ee530932" />
+
 # nnU-Net White Matter Segmentation on Histology Images
 
 Automated white-matter (WM) mask generation from low-resolution H&E-stained histology brain slides using [nnU-Net v2](https://github.com/MIC-DKFZ/nnUNet), the state-of-the-art self-configuring framework for biomedical image segmentation.
